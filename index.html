@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Graza</title>
+</head>
+
+<body>
+    <script>
+        function showContent(contentType) {
+            const allOptions = document.querySelectorAll('.option');
+            const allContent = document.querySelectorAll('.description, .harvest, .use-cases');
+        
+            // Reset all options and content
+            allOptions.forEach(option => option.classList.remove('active'));
+            allContent.forEach(content => content.style.display = 'none');
+        
+            // Show the selected content section and mark the option as active
+            const selectedContent = document.querySelector('.' + contentType);
+            const selectedOption = document.querySelector('.' + contentType + '-option');
+        
+            selectedContent.style.display = 'block';
+            selectedOption.classList.add('active');
+        }
+        
+    </script>
+    <style>
+        body {
+            background-color: rgb(255, 223, 181);
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .slider {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            flex: 1;
+            max-width: 50%;
+            margin-bottom: -5%;
+            margin-top: 0;
+        }
+
+        .slider img {
+            width: 100%;
+            height: auto;
+        }
+
+        .content {
+            flex: 1;
+            max-width: 50%;
+            height: 120%;
+            margin-bottom: -5%;
+            padding: 10px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .slider{
+                position: unset;
+                max-width: 100%;
+                flex: unset;
+            }
+            .content {
+                max-width: 100%;
+                flex: unset;
+            }
+
+            .carousel-item img {
+                height: auto;
+            }
+
+            .carousel-item img {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            #head {
+                position:relative;
+                margin-top: 0%;
+                margin-left: 0%;
+            }
+
+            .Driz {
+                margin-top: 0;
+                margin-left: 0;
+            }
+
+            .card1 {
+                margin-top: 0;
+                margin-left: 0;
+            }
+
+            .options {
+                width: 100%;
+                margin-left: 0;
+                margin-top: 0;
+            }
+
+            .option {
+                width: 100%;
+                margin: 0;
+            }
+
+            .description,
+            .harvest,
+            .use-cases {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .container1 {
+                margin-top: 0;
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        #head {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: rgb(66, 101, 6);
+            font-size: 10ex;
+            text-align: center;
+            margin-top: 0%;
+        }
+
+        .Driz {
+            font-size: 30px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: center;
+            margin-top: -4em;
+        }
+
+        .card1 {
+            border: 1px solid #000;
+            border-radius: 10px;
+            padding: 20px;
+            width: 100%;
+            margin-top: 2.5%;
+            margin-left: 10%;
+            width: 80%;
+            background-color: rgb(255, 242, 227);
+            margin-bottom: 2.5%;
+            text-align: center;
+        }
+
+        #qty {
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        .button-container {
+            margin-top: 4px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .button-container button {
+            width: 120px;
+            height: 100px;
+            background-color: lightgreen;
+            border: none;
+            border-radius: 8px;
+            margin: 10px;
+        }
+
+        .button-container button:hover {
+            background-color: lightgreen;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+        }
+
+        .dropdown-container {
+            margin-bottom: 20px;
+        }
+
+        .dropdown-container label {
+            color: #000;
+        }
+
+        .subscribe-button {
+            width: 100%;
+            padding: 10px;
+            background-color: greenyellow;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .button-discount {
+            font-size: xx-small;
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            background-color: #f0f0f0;
+            width: 80%;
+            margin-left: 10%;
+            margin-top: -4.5%;
+            margin-bottom: 10px;
+        }
+
+        .option {
+            cursor: pointer;
+            width: 400px;
+            padding: 10px;
+            background-color: rgb(255, 223, 181);
+            border: 1px solid #000000;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            font-weight: bolder;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .option:active {
+            background-color: rgb(33, 72, 1);
+            color: white;
+        }
+
+        .container1 {
+            margin-top: 10%;
+            max-width: 800px;
+            margin-left: 0%;
+            margin-right: auto;
+            padding: 0 10px;
+        }
+
+        .description,
+        .harvest,
+        .use-cases {
+            margin-left: 0%;
+            width: 80%;
+            display: none;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border: 1px solid black;
+            background: transparent;
+            margin: 0 auto;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            display: block;
+        }
+
+    </style>
+    <div class="slider static lg-sticky ">
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://www.graza.co/cdn/shop/files/graza-pdp-duo-header-3_2x_caa7f912-38b3-4e36-b928-ed6c036abfc7_720x.jpg" class="d-block w-100" alt="i1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.graza.co/cdn/shop/products/graza-pdp-sizzle-header-3_2x_98f6ef49-281f-4095-b8bb-3045391401fe_720x.jpg" class="d-block w-100" alt="i2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.graza.co/cdn/shop/products/graza-pdp-drizzle-header-3_2x_569477b7-acf0-4950-93a4-c263d6893aa4_720x.jpg" class="d-block w-100" alt="i3">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.graza.co/cdn/shop/products/graza-home-drizzle-in-use_2x_91b89a03-a404-434d-ae48-fb97e37406ab_720x.jpg" class="d-block w-100" alt="i4">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.graza.co/cdn/shop/products/graza-pdp-duo-header-2_2x_7673c33b-ecf4-43d9-b053-4261454c4f3c_720x.jpg" class="d-block w-100" alt="i5">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.graza.co/cdn/shop/products/graza-home-sizzle-in-usecopy_2x_47ab5af6-0732-4835-96ba-9853798e5b9d_720x.jpg" class="d-block w-100" alt="i6">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        
+    </div>
+    <div class="content">
+        <h1 id="head">Graza</h1>
+        <div class="Driz">
+            “Drizzle” & “Sizzle” <br> <u>Extra Virgin Olive Oil</u> <br> <pre><small>&star;&star;&star;&star;&star; 885 Reviews</small></pre>
+        </div>
+        <div class="card1">
+            <h2 id="qty"><b>Quantity</b></h2>
+            <div class="button-container">
+                <button>1<br>Set<br><span class="button-discount">+10% Off<br><br></span></button>
+                <button>2<br>Sets<br><span class="button-discount">Free Shipping! +10% Off</span></button>
+                <button>3<br>Sets<br><span class="button-discount">Free Shipping! +15% Off</span></button>
+                <button>6<br>Sets<br><span class="button-discount">Free Shipping! +17% Off</span></button>
+            </div>
+    
+            <div>
+                <label>
+                    <input type="radio" name="purchaseType"> One Time Purchase
+                    <span class="price">$37</span>
+                </label>
+            </div>
+    
+            <div>
+                <label>
+                    <input type="radio" name="purchaseType"> Subscribe & Save
+                    <span class="price">$37 / $33.30</span>
+                </label>
+            </div>
+    
+            <div class="dropdown-container">
+                <label for="frequency">Frequency:</label>
+                <select id="frequency">
+                    <option value="1">Every 1 Month</option>
+                    <option value="2">Every 2 Months</option>
+                    <option value="3">Every 3 Months</option>
+                </select>
+            </div>
+            <button class="subscribe-button">Subscribe</button>
+    
+        </div>
+        <div class="container1">
+            <div class="box">
+                <div class="options">
+                    <div class="option description-option" onclick="showContent('description')">Description</div>
+                    <div class="option harvest-option" onclick="showContent('harvest')">Harvest</div>
+                    <div class="option use-cases-option" onclick="showContent('use-cases')">Use Cases</div>
+                </div>
+                
+
+                <div class="description">
+                    <p>
+                        <strong>DRIZZLE : 500ml</strong>
+                    </p>
+                    <p style="margin-top: 5px;">
+                        "Extra Virgin finishing oil made from olives that are picked early, when flavor is bold and antioxidants are highest. Made for eating, never heating."
+                    </p>
+
+                    <p style="margin-top: 5px;">
+                        <strong>SIZZLE : 750ML</strong>
+                    </p>
+
+                    <p style="margin-top: 5px;">
+                        Extra Virgin cooking oil made from mature, mid-season olives that yield a more mellow flavor. Use it every day, in every way.
+                    </p>
+
+                    <p style="margin-top: 5px;">*
+                        <strong>HEADS UP! MULTIPLE SETS OF DRIZZLE & SIZZLE SHIP IN THE SAME BOX! TO ORDER INDIVIDUALLY PACKAGED GIFT SETS,</strong>
+                        &nbsp;
+                        <span style="text-decoration: underline;"><strong><a href="">CLICK HERE!</a></strong></span>
+                    </p>
+
+                </div>
+
+                <div class="harvest">
+                    <strong>DRIZZLE: </strong>
+                    <br>
+                    
+                    Harvested in October, before the olives have ripened fully. Picked by hand because young olives need a firm yank to loosen up. 
+                        <br>
+
+                    <br>
+                    <strong>SIZZLE:</strong>
+                    <br>
+
+                    Harvested in November and December, when the olives are more mature. They’re pretty laid back by this point, so it only takes a few shakes to get them off the branch.
+
+                </div>
+
+                <div class="use-cases">
+                    <strong>DRIZZLE: </strong>
+                        <br>
+                        
+                        A little Drizzle goes a long way! Use it on and around things like ice cream, pesto, popcorn, salads, sandwiches or even directly on your tongue (we won’t tell).
+                            <br>
+
+                        <br>
+                        <strong>SIZZLE:</strong>
+                        <br>
+
+                        If you would put it in or on top of an oven, use sizzle. Chicken Cutlets, Sheet Pan Veggies, Fried Rice, or even Chocolate Chip Cookies! You name it, Sizzle sizzles it.
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
