@@ -90,8 +90,15 @@
             }
 
             .Driz {
+               
+                position:relative;
+                z-index: 1;
                 margin-top: 0;
                 margin-left: 0;
+            }
+            .driz1{
+                position:relative;
+                z-index:1;
             }
 
             .card1 {
@@ -131,13 +138,21 @@
             font-size: 10ex;
             text-align: center;
             margin-top: 0%;
+            font-weight: bold;
         }
 
         .Driz {
-            font-size: 30px;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 50px;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow',  sans-serif;
+            font-weight:lighter;
             text-align: center;
-            margin-top: -4em;
+            
+            margin-top: -3em;
+        }
+        .driz1{
+            margin-top:-1em;
+            font-size: 25px;
+            text-align: center;
         }
 
         .card1 {
@@ -158,26 +173,23 @@
             font-size: 25px;
         }
 
-        .button-container {
-            margin-top: 4px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
         .button-container button {
             width: 120px;
             height: 100px;
             background-color: lightgreen;
             border: none;
             border-radius: 8px;
-            margin: 10px;
+            margin: 5px;
+            transition: background-color 0.3s; /* Added transition effect */
         }
-
+        
         .button-container button:hover {
-            background-color: lightgreen;
+            background-color: #98FB98; /* Lighter shade of green on hover */
         }
+        .button-container button:active {
+            background-color: #d7ff36; /* Lighter shade of green on hover */
+        }
+        
 
         input[type="radio"] {
             margin-right: 10px;
@@ -189,27 +201,51 @@
 
         .dropdown-container {
             margin-bottom: 20px;
+            border-radius: 8px;
+            border-style: solid;
+            border-color: #000;
+            background-color: rgb(255, 242, 227);
         }
-
+        #dropdown{
+            margin-bottom: 20px;
+          
+            border-radius: 8px;
+            border-style: solid;
+            border-color: #000;
+            background-color: rgb(255, 242, 227);
+        }
         .dropdown-container label {
             color: #000;
+            border-radius: 8px;
+            border-style: solid;
+            border-color: #000;
+            background-color: rgb(255, 242, 227);
         }
 
         .subscribe-button {
             width: 100%;
             padding: 10px;
-            background-color: greenyellow;
+            background-color: rgb(234, 255, 139);
             color: #000;
-            border: none;
-            border-radius: 8px;
+            border: 2px solid #000;
+            border-radius: 25px;
             font-size: 16px;
             cursor: pointer;
             font-weight: bold;
+            transition: background-color 0.3s, border-color 0.3s;
         }
+        
+        .subscribe-button:hover {
+            background-color: #4dff2a; /* Change color on hover */
+        }
+        
+        .subscribe-button:active {
+            background-color: #009900; /* Change color when button is clicked */
+            border-color: #009900; /* Change border color when button is clicked */
+        }
+        
 
-        .button-discount {
-            font-size: xx-small;
-        }
+     
 
         .options {
             display: flex;
@@ -220,7 +256,11 @@
             margin-top: -4.5%;
             margin-bottom: 10px;
         }
-
+        .dotted-line {
+            border-top: 2px dashed #000; /* Adjust color and thickness as needed */
+            width: 100%; /* This ensures the line spans the full width of the container */
+        }
+        
         .option {
             cursor: pointer;
             width: 400px;
@@ -266,6 +306,12 @@
         .description {
             display: block;
         }
+        .dropdown-container {
+            border: 2px solid #000; /* Adjust color and thickness as needed */
+            padding: 10px; /* Add some padding to give some space between the content and the border */
+        }
+        
+       
 
     </style>
     <div class="slider static lg-sticky ">
@@ -304,32 +350,68 @@
     <div class="content">
         <h1 id="head">Graza</h1>
         <div class="Driz">
-            “Drizzle” & “Sizzle” <br> <u>Extra Virgin Olive Oil</u> <br> <pre><small>&star;&star;&star;&star;&star; 885 Reviews</small></pre>
+            “Drizzle” & “Sizzle” <br> <u>Extra Virgin Olive Oil</u> 
         </div>
+        <div class="driz1">
+            <br> <pre><small>&star;&star;&star;&star;&star; 885 Reviews</small></pre>
+        </div>
+        
         <div class="card1">
             <h2 id="qty"><b>Quantity</b></h2>
             <div class="button-container">
-                <button>1<br>Set<br><span class="button-discount">+10% Off<br><br></span></button>
-                <button>2<br>Sets<br><span class="button-discount">Free Shipping! +10% Off</span></button>
-                <button>3<br>Sets<br><span class="button-discount">Free Shipping! +15% Off</span></button>
-                <button>6<br>Sets<br><span class="button-discount">Free Shipping! +17% Off</span></button>
+                <button onclick="updatePrices(37, 33.30)">1<br>Set<br><span class="button-discount">+10% Off<br><br></span></button>
+                <button onclick="updatePrices(69, 64.17)">2<br>Sets<br><span class="button-discount">Free Shipping! +10% Off</span></button>
+                <button onclick="updatePrices(102, 94.86)">3<br>Sets<br><span class="button-discount">Free Shipping! +15% Off</span></button>
+                <button onclick="updatePrices(199, 185.07)">6<br>Sets<br><span class="button-discount">Free Shipping! +17% Off</span></button>
             </div>
-    
+            
+            <div class="dotted-line"></div>
+            <br>
             <div>
                 <label>
-                    <input type="radio" name="purchaseType"> One Time Purchase
-                    <span class="price">$37</span>
+                    <input type="radio" name="purchaseType" value="oneTime" > One Time Purchase : 
+                    <span class="price" id="oneTimePrice">$37</span>
                 </label>
             </div>
-    
+            <br>
+            <div class="dotted-line"></div>
+            <br>
             <div>
                 <label>
-                    <input type="radio" name="purchaseType"> Subscribe & Save
-                    <span class="price">$37 / $33.30</span>
+                    <input type="radio" name="purchaseType" value="subscribe" > Subscribe & Save : 
+                    <span class="price" id="subscribePrice">$33.30</span>
                 </label>
             </div>
-    
-            <div class="dropdown-container">
+            <br>
+
+            <script>
+            function updatePrices(oneTimePrice, subscribePrice) {
+                var oneTimeElement = document.getElementById('oneTimePrice');
+                var subscribeElement = document.getElementById('subscribePrice');
+            
+                if(oneTimePrice && subscribePrice) {
+                    oneTimeElement.textContent = "$" + oneTimePrice;
+                    subscribeElement.textContent = "$" + subscribePrice;
+                } else {
+                    // Default values in case no arguments are provided
+                    oneTimeElement.textContent = "$37";
+                    subscribeElement.textContent = "$33.30";
+                }
+            }
+            
+            document.querySelectorAll('input[name="purchaseType"]').forEach(function(radio) {
+                radio.addEventListener('change', function() {
+                    if(this.value === 'oneTime') {
+                        updatePrices(37);
+                    } else if(this.value === 'subscribe') {
+                        updatePrices(37, 33.30);
+                    }
+                });
+            });
+            </script>
+            
+            
+            <div class="dropdown-container" id="dropdown">
                 <label for="frequency">Frequency:</label>
                 <select id="frequency">
                     <option value="1">Every 1 Month</option>
@@ -337,6 +419,8 @@
                     <option value="3">Every 3 Months</option>
                 </select>
             </div>
+            <div class="dotted-line"></div>
+            <br>
             <button class="subscribe-button">Subscribe</button>
     
         </div>
